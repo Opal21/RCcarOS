@@ -1,4 +1,4 @@
-#muszę jeszcze zrobić research i poświęcić więcej czasu.
+
 
 # import main Flask class and request object
 from flask import Flask, request
