@@ -34,29 +34,29 @@ def video():
     return Response(generate_frames(),mimetype='multipart/x-mixed-replace; boundary=frame')
 
 ## listeners to the client requests
-@socket_.on('my_event', namespace='/test')
+@socket_.on('my_event')
 def test_message(message):
     print(message)
 
-@socket_.on('custom-event1', namespace='/test')
+@socket_.on('custom-event1')
 def handle_message(data):
     print('received message: ' + data)
 
-@socket_.on('custom-event2', namespace='/test')
+@socket_.on('custom-event2')
 def handle_message(data):
     print('received message: ' + data)
 
-@socket_.on('custom-event3', namespace='/test')
+@socket_.on('custom-event3')
 def handle_message(data):
     print('received message: ' + data)
 
-@socket_.on('custom-event4', namespace='/test')
+@socket_.on('custom-event4')
 def handle_message(data):
     print('received message: ' + data)
 
-@socket_.on('custom-event5', namespace='/test')
+@socket_.on('custom-event5')
 def handle_message(data):
     print('received message: ' + data)
 
 if __name__ == '__main__':
-    socket_.run(app, debug=True)
+    socket_.run(app, host='0.0.0.0', debug=True)
