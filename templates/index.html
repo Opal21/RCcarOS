@@ -13,8 +13,8 @@ const down = document.querySelector("#down"); //select the button
 const left = document.querySelector("#left"); //select the button
 const right = document.querySelector("#right"); //select the button
 
-  namespace = '/test';
-  var socket = io(namespace);
+  // namespace = '/test';
+  var socket = io();
 
   socket.on('connect', function() {
       socket.emit('my_event','connected to the SocketServer...');
