@@ -1,156 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- <link href="styles.css" rel="stylesheet"> -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js"></script>
-  <script type="text/javascript" charset="utf-9">
-    $(document).ready(function() {
-
-const up = document.querySelector("#up"); //select the button
-const down = document.querySelector("#down"); //select the button
-const left = document.querySelector("#left"); //select the button
-const right = document.querySelector("#right"); //select the button
-
-  // namespace = '/test';
-  var socket = io();
-
-  socket.on('connect', function() {
-      socket.emit('my_event','connected to the SocketServer...');
-    })
-
-// start functions
-const forwards = () => {
-  //console.log("Going Forwards");
-  socket.emit('custom-event1','Going forwards')
-};
-
-const backwards = () => {
-  //console.log("Going Backwards");
-  socket.emit('custom-event2','Going backwards')
-};
-
-const lefts = () => {
-  //console.log("Going Left");
-  socket.emit('custom-event3','Going Left')
-};
-
-const rights = () => {
-  //console.log("Going Right");
-  socket.emit('custom-event4','Going Right')
-};
-
-
-//end function
-const stop = () => {
-  //console.log("Stop");
-  socket.emit('custom-event5','Stopping')
-};
-
-
-[
-  [up, forwards],
-  [right, rights],
-  [down, backwards],
-  [left, lefts]
-].forEach((arrowFn) => {
-  arrowFn[0].addEventListener("pointerdown", arrowFn[1]);
-  arrowFn[0].addEventListener("pointerup", stop);
-});
-
-});
-  </script>
-  <style>
-    body {
-    background-color: #cccccc;
-}
-
-h2 {
-  margin: 0 auto;
-  color: red;
-  text-align:center;
-  font-size: 40px;
-}
-
-section {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.arrows {
-    font-size: 30px;
-    font-weight: 800;
-    color:red;
-    min-height: 6.3vh;
-    width: 15vw;
-  }
-
-   button {
-    background-color:white;
-    border-radius:25%;
-    box-shadow: 5px 5px #888888;
-  }
-   button:active {
-    transform: translate(5px,5px);
-    box-shadow: none; 
-  }
- 
-  #camera-container {
-    margin: 0 auto;
-    height: 60vh;
-    width: 60%;
-    border: 8px #333 solid;
-  }
-
-  #videoElement {
-    margin: 0 auto;
-    width:100%;
-    height: 100%;
-  }
-
-   .noselect {
-    -webkit-touch-callout: none; /* iOS Safari */
-      -webkit-user-select: none; /* Safari */
-       -khtml-user-select: none; /* Konqueror HTML */
-         -moz-user-select: none; /* Firefox */
-          -ms-user-select: none; /* Internet Explorer/Edge */
-              user-select: none; /* Non-prefixed version, currently
-                                    supported by Chrome and Opera */
-  } 
-  </style>
-    <title></title>
+    <title>RC CAR</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static',filename='styles.css') }}"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js"></script>
+    <script src="{{ url_for('static',filename='main.js') }}"></script>
   </head>
-<body>
-  <h2>RC CAR</h2>
-  <section>
-  <div id="camera-container">
-     <img id="videoElement" alt="video" src="{{ url_for('video') }}">
-  </div>
-  <div id="control-container">
-  <table id="main-table" CELLSPACING=5>
-    <tr>
-      <td></td>
-      <td><button id="up" class="arrows">&#8679;</button></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td><button id="left" class="arrows">&#8678;</button></td>
-      <td></td>    
-      <td><button id="right" class="arrows">&#8680;</button></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td><button id="down" class="arrows">&#8681;</button></td>
-      <td></td>
-    </tr>
-  </table>
-</div>
-</section>
-  <!-- <script src="main.js"></script> -->
-</body>    
+  <body>
+    <h2>RC CAR</h2>
+    <section>
+      <div id="camera-container">
+        <img id="videoElement" alt="video" src="{{ url_for('video') }}" />
+      </div>
+      <div id="control-container">
+        <table id="main-table" cellspacing="5">
+          <tr>
+            <td></td>
+            <td><button id="up" class="arrows">&#8679;</button></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><button id="left" class="arrows">&#8678;</button></td>
+            <td></td>
+            <td><button id="right" class="arrows">&#8680;</button></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><button id="down" class="arrows">&#8681;</button></td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+    </section>
+  </body>
 </html>
