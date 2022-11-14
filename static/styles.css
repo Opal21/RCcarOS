@@ -37,7 +37,7 @@ button:active {
 }
 
 #camera-container {
-  margin: 10 auto;
+  margin: 0 auto;
   height: 60vh;
   width: 60%;
   border: 8px #333 solid;
