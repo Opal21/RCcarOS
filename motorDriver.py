@@ -13,12 +13,16 @@ def set_right_mode():
     """Set mode to Right"""
     GPIO.output(FRONT_MOTOR_DATA_ONE, True)
     GPIO.output(FRONT_MOTOR_DATA_TWO, False)
+    GPIO.output(BACK_MOTOR_DATA_ONE, False)
+    GPIO.output(BACK_MOTOR_DATA_TWO, True)
 
 
 def set_left_mode():
     """Set mode to Left"""
     GPIO.output(FRONT_MOTOR_DATA_ONE, False)
     GPIO.output(FRONT_MOTOR_DATA_TWO, True)
+    GPIO.output(BACK_MOTOR_DATA_ONE, True)
+    GPIO.output(BACK_MOTOR_DATA_TWO, False)
 
 
 def set_reverse_mode():
