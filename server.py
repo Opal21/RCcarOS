@@ -18,10 +18,12 @@ app = Flask(__name__)
 socket_ = SocketIO(app, async_mode=None)
 
 motorDriver.set_gpio_pins()
-pwm_left = GPIO.PWM(motorDriver.LEFT_MOTOR_ENABLE_PIN, motorDriver.PWM_FREQUENCY)
-pwm_left.start(motorDriver.INITIAL_PWM_DUTY_CYCLE)
-pwm_right = GPIO.PWM(motorDriver.RIGHT_MOTOR_ENABLE_PIN, motorDriver.PWM_FREQUENCY)
-pwm_right.start(motorDriver.INITIAL_PWM_DUTY_CYCLE)
+pwm_rl = GPIO.PWM(motorDriver.REAR_LEFT_MOTOR_ENABLE_PIN, motorDriver.PWM_FREQUENCY)
+pwm_rl.start(motorDriver.INITIAL_PWM_DUTY_CYCLE)
+pwm_fl = GPIO.PWM(motorDriver.FRONT_LEFT_MOTOR_ENABLE_PIN, motorDriver.PWM_FREQUENCY)
+pwm_fl.start(motorDriver.INITIAL_PWM_DUTY_CYCLE)
+pwm_fr = GPIO.PWM(motorDriver.FRONT_RIGHT_MOTOR_ENABLE_PIN, motorDriver.PWM_FREQUENCY)
+pwm_fr.start(motorDriver.INITIAL_PWM_DUTY_CYCLE)
 
 camera = cv2.VideoCapture(0)
 
