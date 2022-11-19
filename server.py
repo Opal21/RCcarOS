@@ -3,6 +3,7 @@ from flask import Flask, render_template, Response, session
 from flask_socketio import SocketIO
 import cv2
 import motorDriver
+import RPi.GPIO as GPIO
 
 
 class Directions(Enum):
@@ -15,6 +16,12 @@ class Directions(Enum):
 
 app = Flask(__name__)
 socket_ = SocketIO(app, async_mode=None)
+
+motorDriver.set_gpio_pins()
+pwm_left = GPIO.PWM(motorDriver.LEFT_MOTOR_ENABLE_PIN, motorDriver.PWM_FREQUENCY)
+pwm_left.start(motorDriver.INITIAL_PWM_DUTY_CYCLE)
+pwm_right = GPIO.PWM(motorDriver.RIGHT_MOTOR_ENABLE_PIN, motorDriver.PWM_FREQUENCY)
+pwm_right.start(motorDriver.INITIAL_PWM_DUTY_CYCLE)
 
 camera = cv2.VideoCapture(0)
 
@@ -93,4 +100,4 @@ def set_direction(direction):
 
 
 if __name__ == '__main__':
-    socket_.run(app, host='0.0.0.0', debug=True, allow_unsafe_werkzeug=True)
+    socket_.run(app, host='0.0.0.0', allow_unsafe_werkzeug=True)

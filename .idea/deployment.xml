@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" createEmptyFolders="true" remoteFilesAllowedToDisappearOnAutoupload="false" autoUploadExternalChanges="true">
+  <component name="PublishConfigData" autoUpload="Always" serverName="opal@192.168.0.17:22 password" createEmptyFolders="true" remoteFilesAllowedToDisappearOnAutoupload="false" confirmBeforeUploading="false" autoUploadExternalChanges="true">
+    <option name="confirmBeforeUploading" value="false" />
     <serverData>
       <paths name="opal@192.168.0.17:22 password">
         <serverdata>
           <mappings>
-            <mapping deploy="/tmp/pycharm_project_891" local="$PROJECT_DIR$" />
+            <mapping deploy="/tmp/pycharm_project_302" local="$PROJECT_DIR$" />
           </mappings>
         </serverdata>
       </paths>
