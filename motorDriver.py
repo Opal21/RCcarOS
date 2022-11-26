@@ -1,17 +1,18 @@
 import RPi.GPIO as GPIO
 
+
 FRONT_RIGHT_MOTOR_ENABLE_PIN = 22
 FRONT_RIGHT_MOTOR_DATA_ONE = 27
 FRONT_RIGHT_MOTOR_DATA_TWO = 17
-REAR_RIGHT_MOTOR_ENABLE_PIN = 2  # TBW
-REAR_RIGHT_MOTOR_DATA_ONE = 3  # TBW
-REAR_RIGHT_MOTOR_DATA_TWO = 4  # TBW
+REAR_RIGHT_MOTOR_ENABLE_PIN = 21
+REAR_RIGHT_MOTOR_DATA_ONE = 20
+REAR_RIGHT_MOTOR_DATA_TWO = 16
 REAR_LEFT_MOTOR_ENABLE_PIN = 13
 REAR_LEFT_MOTOR_DATA_ONE = 26
 REAR_LEFT_MOTOR_DATA_TWO = 19
-FRONT_LEFT_MOTOR_ENABLE_PIN = 0  # TBW
-FRONT_LEFT_MOTOR_DATA_ONE = 5  # TBW
-FRONT_LEFT_MOTOR_DATA_TWO = 6  # TBW
+FRONT_LEFT_MOTOR_ENABLE_PIN = 0
+FRONT_LEFT_MOTOR_DATA_ONE = 5
+FRONT_LEFT_MOTOR_DATA_TWO = 6
 PWM_FREQUENCY = 1000
 INITIAL_PWM_DUTY_CYCLE = 100
 
@@ -34,10 +35,11 @@ def set_left_mode():
 
 def set_reverse_mode():
     """Set mode to Reverse"""
-    GPIO.output(FRONT_RIGHT_MOTOR_DATA_ONE, False)
-    GPIO.output(FRONT_RIGHT_MOTOR_DATA_TWO, True)
-    GPIO.output(FRONT_LEFT_MOTOR_DATA_ONE, False)
-    GPIO.output(FRONT_LEFT_MOTOR_DATA_TWO, True)
+    GPIO.output(FRONT_RIGHT_MOTOR_DATA_ONE, True)
+    GPIO.output(FRONT_RIGHT_MOTOR_DATA_TWO, False)
+    GPIO.output(FRONT_LEFT_MOTOR_DATA_ONE, True)
+    GPIO.output(FRONT_LEFT_MOTOR_DATA_TWO, False)
+
     GPIO.output(REAR_RIGHT_MOTOR_DATA_ONE, False)
     GPIO.output(REAR_RIGHT_MOTOR_DATA_TWO, True)
     GPIO.output(REAR_LEFT_MOTOR_DATA_ONE, False)
@@ -46,10 +48,11 @@ def set_reverse_mode():
 
 def set_forward_mode():
     """Set mode to Forward"""
-    GPIO.output(FRONT_RIGHT_MOTOR_DATA_ONE, True)
-    GPIO.output(FRONT_RIGHT_MOTOR_DATA_TWO, False)
-    GPIO.output(FRONT_LEFT_MOTOR_DATA_ONE, True)
+    GPIO.output(FRONT_RIGHT_MOTOR_DATA_ONE, False)
+    GPIO.output(FRONT_RIGHT_MOTOR_DATA_TWO, True)
     GPIO.output(FRONT_LEFT_MOTOR_DATA_ONE, False)
+    GPIO.output(FRONT_LEFT_MOTOR_DATA_TWO, True)
+
     GPIO.output(REAR_LEFT_MOTOR_DATA_ONE, True)
     GPIO.output(REAR_LEFT_MOTOR_DATA_TWO, False)
     GPIO.output(REAR_RIGHT_MOTOR_DATA_ONE, True)
@@ -58,11 +61,11 @@ def set_forward_mode():
 
 def set_idle_mode():
     """Set mode to Idle"""
-    set_right_motor_to_idle()
-    set_left_motor_to_idle()
+    set_rear_motors_to_idle()
+    set_front_motors_to_idle()
 
 
-def set_right_motor_to_idle():
+def set_rear_motors_to_idle():
     """Sets the RIGHT motor to Idle state"""
     GPIO.output(REAR_LEFT_MOTOR_DATA_ONE, True)
     GPIO.output(REAR_LEFT_MOTOR_DATA_TWO, True)
@@ -70,12 +73,12 @@ def set_right_motor_to_idle():
     GPIO.output(REAR_RIGHT_MOTOR_DATA_TWO, True)
 
 
-def set_left_motor_to_idle():
+def set_front_motors_to_idle():
     """Sets the LEFT motor to Idle state"""
     GPIO.output(FRONT_RIGHT_MOTOR_DATA_ONE, True)
     GPIO.output(FRONT_RIGHT_MOTOR_DATA_TWO, True)
     GPIO.output(FRONT_LEFT_MOTOR_DATA_ONE, True)
-    GPIO.output(FRONT_LEFT_MOTOR_DATA_ONE, True)
+    GPIO.output(FRONT_LEFT_MOTOR_DATA_TWO, True)
 
 
 def set_gpio_pins():
