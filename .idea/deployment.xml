@@ -1,26 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="opal@192.168.0.17:22 password" createEmptyFolders="true" remoteFilesAllowedToDisappearOnAutoupload="false" confirmBeforeUploading="false" autoUploadExternalChanges="true">
+  <component name="PublishConfigData" autoUpload="Always" serverName="pi@raspberrypi.local:22 password" createEmptyFolders="true" remoteFilesAllowedToDisappearOnAutoupload="false" confirmBeforeUploading="false" autoUploadExternalChanges="true">
     <option name="confirmBeforeUploading" value="false" />
     <serverData>
-      <paths name="Raspberry Wiezienna">
+      <paths name="pi@raspberrypi.local:22 password">
         <serverdata>
           <mappings>
-            <mapping deploy="/tmp/RCcarOS" local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="opal@192.168.0.17:22 password">
-        <serverdata>
-          <mappings>
-            <mapping deploy="/tmp/pycharm_project_286" local="$PROJECT_DIR$" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="opal@raspberrypi.local:22 password">
-        <serverdata>
-          <mappings>
-            <mapping deploy="/tmp/pycharm_project_86" local="$PROJECT_DIR$" />
+            <mapping deploy="/tmp/pycharm_project_126" local="$PROJECT_DIR$" />
           </mappings>
         </serverdata>
       </paths>
