@@ -1,8 +1,12 @@
 $(document).ready(function () {
   const up = document.querySelector("#up"); //select the button
-  const down = document.querySelector("#down"); //select the button
-  const left = document.querySelector("#left"); //select the button
-  const right = document.querySelector("#right"); //select the button
+  const down = document.querySelector("#down"); 
+  const left = document.querySelector("#left"); 
+  const right = document.querySelector("#right"); 
+  const lup = document.querySelector("#left-up"); 
+  const rup = document.querySelector("#right-up"); 
+  const ldown = document.querySelector("#left-down"); 
+  const rdown = document.querySelector("#right-down"); 
 
   //namespace = '/test';
   const socket = io();
