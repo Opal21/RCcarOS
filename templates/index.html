@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>RC CAR</title>
     <link
       rel="stylesheet"
       type="text/css"
@@ -16,7 +15,6 @@
     <script src="{{ url_for('static',filename='main.js') }}"></script>
   </head>
   <body class="noselect">
-    <h2>RC CAR</h2>
     <section>
       <div id="camera-container">
         <img id="videoElement" alt="video" src="{{ url_for('video') }}" />
@@ -24,9 +22,17 @@
       <div id="control-container">
         <table id="main-table" cellspacing="5">
           <tr>
-            <td></td>
+            <td>
+              <button id="left-up" class="arrows">
+                <span class="left-up">&#8679;</span>
+              </button>
+            </td>
             <td><button id="up" class="arrows">&#8679;</button></td>
-            <td></td>
+            <td>
+              <button id="right-up" class="arrows">
+                <span class="right-up">&#8679;</span>
+              </button>
+            </td>
           </tr>
           <tr>
             <td><button id="left" class="arrows">&#8678;</button></td>
@@ -34,9 +40,17 @@
             <td><button id="right" class="arrows">&#8680;</button></td>
           </tr>
           <tr>
-            <td></td>
+            <td>
+              <button id="left-down" class="arrows">
+                <span class="left-down">&#8679;</span>
+              </button>
+            </td>
             <td><button id="down" class="arrows">&#8681;</button></td>
-            <td></td>
+            <td>
+              <button id="right-down" class="arrows">
+                <span class="right-down">&#8679;</span>
+              </button>
+            </td>
           </tr>
         </table>
       </div>
