@@ -8,34 +8,54 @@ $(document).ready(function () {
   const socket = io();
 
   socket.on("connect", function () {
-    socket.emit("my_event", "connected to the SocketServer...");
+    socket.emit("ConnectionCheck", "connected to the SocketServer...");
   });
 
   // start functions
   const forwards = () => {
     //console.log("Going Forwards");
-    socket.emit("custom-event1", "Going forwards");
+    socket.emit("forwards", "Going forwards");
   };
 
   const backwards = () => {
     //console.log("Going Backwards");
-    socket.emit("custom-event2", "Going backwards");
+    socket.emit("backwards", "Going backwards");
   };
 
   const lefts = () => {
     //console.log("Going Left");
-    socket.emit("custom-event3", "Going Left");
+    socket.emit("left", "Going Left");
   };
 
   const rights = () => {
     //console.log("Going Right");
-    socket.emit("custom-event4", "Going Right");
+    socket.emit("right", "Going Right");
+  };
+
+  const leftUp = () => {
+    //console.log("Going Right");
+    socket.emit("up-left", "Going up-left");
+  };
+
+  const rightUp = () => {
+    //console.log("Going Right");
+    socket.emit("up-right", "Going up-right");
+  };
+
+  const leftDown = () => {
+    //console.log("Going Right");
+    socket.emit("down-left", "Going down-left");
+  };
+
+  const rightDown = () => {
+    //console.log("Going Right");
+    socket.emit("down-right", "Going down-right");
   };
 
   //end function
   const stop = () => {
-    //console.log("Stop");
-    socket.emit("custom-event5", "Stopping");
+    //console.log("stop");
+    socket.emit("stop", "Stopping");
   };
 
   [
@@ -43,6 +63,10 @@ $(document).ready(function () {
     [right, rights],
     [down, backwards],
     [left, lefts],
+    [lup, leftUp],
+    [rup, rightUp],
+    [ldown, leftDown],
+    [rdown, rightDown],
   ].forEach((arrowFn) => {
     arrowFn[0].addEventListener("pointerdown", arrowFn[1]);
     arrowFn[0].addEventListener("pointerup", stop);
