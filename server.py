@@ -42,17 +42,23 @@ camera = cv2.VideoCapture(0)
 
 def generate_frames():
     while True:
-        # read the camera frame
-        success, frame = camera.read()
-        if not success:
-            break
-        else:
-            ret, buffer = cv2.imencode('.jpg', frame)
-            frame = buffer.tobytes()
 
+        # Read the frame
+        _, frame = camera.read()
+
+        # Show the frame
+        cv2.imshow("Live Feed", frame)
+
+        # Return the frame
         yield (b'--frame\r\n'
-               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
 
+        # Stop if 'q' is pressed
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+
+    # Release the capture
+    camera.release()
 
 @app.route('/')
 def index():
@@ -129,3 +135,4 @@ def set_direction(direction):
 
 if __name__ == '__main__':
     socket_.run(app, host='0.0.0.0', allow_unsafe_werkzeug=True)
+
