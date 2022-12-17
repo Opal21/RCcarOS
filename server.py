@@ -65,36 +65,50 @@ def video():
 
 
 # listeners to the client requests
-@socket_.on('my_event')
+@socket_.on('ConnectionCheck')
 def test_message(message):
     print(message)
 
 
-@socket_.on('custom-event1')
+@socket_.on('forwards')
 def handle_message(data):
     print('received message: ' + data)
     set_direction(Directions.FORWARD)
 
 
-@socket_.on('custom-event2')
+@socket_.on('backwards')
 def handle_message(data):
     print('received message: ' + data)
     set_direction(Directions.BACKWARD)
 
 
-@socket_.on('custom-event3')
+@socket_.on('left')
 def handle_message(data):
     print('received message: ' + data)
     set_direction(Directions.LEFT)
 
-
-@socket_.on('custom-event4')
+@socket_.on('right')
 def handle_message(data):
     print('received message: ' + data)
     set_direction(Directions.RIGHT)
+    
+@socket_.on('up-left')
+def handle_message(data):
+    print('received message: ' + data)
 
+@socket_.on('up-right')
+def handle_message(data):
+    print('received message: ' + data)
 
-@socket_.on('custom-event5')
+@socket_.on('down-left')
+def handle_message(data):
+    print('received message: ' + data)
+
+@socket_.on('down-right')
+def handle_message(data):
+    print('received message: ' + data)
+    
+@socket_.on('stop')
 def handle_message(data):
     print('received message: ' + data)
     set_direction(Directions.STOP)
