@@ -1,12 +1,16 @@
 body {
-  background-color: #cccccc;
+  background-image: url('background-image2.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 h2 {
   margin: 0 auto;
-  color: red;
+  color: black;
   text-align: center;
-  font-size: 40px;
+  font-size: 20px;
 }
 
 section {
@@ -20,16 +24,39 @@ section {
 
 .arrows {
   font-size: 30px;
-  font-weight: 800;
-  color: red;
-  min-height: 6.3vh;
-  width: 15vw;
+  font-weight: bold;
+  color: RGB(213,144,172);
+  height: 6.3vh;
+  width: 12vw;
+}
+
+.left-up {
+  transform: rotate(-45deg);
+  display: inline-block;
+}
+.right-up {
+  transform: rotate(45deg);
+  display: inline-block;
+}
+.left-down {
+  transform: rotate(225deg);
+  display: inline-block;
+}
+.right-down {
+  transform: rotate(-225deg);
+  display: inline-block;
+}
+
+#control-container {
+  margin-top: 10px;
 }
 
 button {
-  background-color: white;
+  background-color: RGB(10,26,88);
   border-radius: 25%;
-  box-shadow: 5px 5px #888888;
+  box-shadow: 5px 5px RGB(76,73,138);
+  transition: all 0.3s ease;
+  
 }
 button:active {
   transform: translate(5px, 5px);
@@ -37,9 +64,9 @@ button:active {
 }
 
 #camera-container {
-  margin: 0 auto;
-  height: 60vh;
-  width: 60%;
+  margin: 10 auto;
+  height: 70vh;
+  width: 80%;
   border: 8px #333 solid;
 }
 
@@ -48,6 +75,19 @@ button:active {
   width: 100%;
   height: 100%;
 }
+
+ @media (max-height: 650px) {
+   #camera-container {
+    height: 60vh;
+  } 
+} 
+
+@media (max-width: 300px) {
+  .arrows {
+    font-size: 25px;
+    font-weight: 800;
+  }
+} 
 
 .noselect {
   -webkit-touch-callout: none; /* iOS Safari */
