@@ -1,9 +1,11 @@
 from enum import Enum
-from flask import Flask, render_template, Response, session
-from flask_socketio import SocketIO
-import cv2
-import motorDriver
+
 import RPi.GPIO as GPIO
+import cv2
+from flask import Flask, render_template, Response
+from flask_socketio import SocketIO
+
+import motorDriver
 
 
 class Directions(Enum):
@@ -12,18 +14,26 @@ class Directions(Enum):
     BACKWARD = 2
     RIGHT = 3
     LEFT = 4
+    FRONT_RIGHT = 5
+    FRONT_LEFT = 6
+    TURN_RIGHT = 7
+    TURN_LEFT = 8
 
 
 app = Flask(__name__)
 socket_ = SocketIO(app, async_mode=None)
 
 motorDriver.set_gpio_pins()
+
 pwm_front_left = GPIO.PWM(motorDriver.FRONT_LEFT_MOTOR_ENABLE_PIN, motorDriver.PWM_FREQUENCY)
 pwm_front_left.start(motorDriver.INITIAL_PWM_DUTY_CYCLE)
+
 pwm_rear_left = GPIO.PWM(motorDriver.REAR_LEFT_MOTOR_ENABLE_PIN, motorDriver.PWM_FREQUENCY)
 pwm_rear_left.start(motorDriver.INITIAL_PWM_DUTY_CYCLE)
+
 pwm_front_right = GPIO.PWM(motorDriver.FRONT_RIGHT_MOTOR_ENABLE_PIN, motorDriver.PWM_FREQUENCY)
 pwm_front_right.start(motorDriver.INITIAL_PWM_DUTY_CYCLE)
+
 pwm_rear_right = GPIO.PWM(motorDriver.REAR_RIGHT_MOTOR_ENABLE_PIN, motorDriver.PWM_FREQUENCY)
 pwm_rear_right.start(motorDriver.INITIAL_PWM_DUTY_CYCLE)
 
@@ -92,13 +102,13 @@ def handle_message(data):
 
 def set_direction(direction):
     if direction == Directions.FORWARD:
-        motorDriver.set_forward_mode()
+        motorDriver.go_forward()
     elif direction == Directions.BACKWARD:
-        motorDriver.set_reverse_mode()
+        motorDriver.go_reverse()
     elif direction == Directions.LEFT:
-        motorDriver.set_left_mode()
+        motorDriver.turn_left()
     elif direction == Directions.RIGHT:
-        motorDriver.set_right_mode()
+        motorDriver.turn_right()
     else:
         motorDriver.set_idle_mode()
 
