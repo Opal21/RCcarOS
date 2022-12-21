@@ -18,6 +18,8 @@ class Directions(Enum):
     FRONT_LEFT = 6
     TURN_RIGHT = 7
     TURN_LEFT = 8
+    REAR_RIGHT = 9
+    REAR_LEFT = 10
 
 
 app = Flask(__name__)
@@ -60,6 +62,7 @@ def generate_frames():
     # Release the capture
     camera.release()
 
+
 @app.route('/')
 def index():
     return render_template('index.html', async_mode=socket_.async_mode)
@@ -93,27 +96,37 @@ def handle_message(data):
     print('received message: ' + data)
     set_direction(Directions.LEFT)
 
+
 @socket_.on('right')
 def handle_message(data):
     print('received message: ' + data)
     set_direction(Directions.RIGHT)
-    
+
+
 @socket_.on('up-left')
 def handle_message(data):
     print('received message: ' + data)
+    set_direction(Directions.FRONT_LEFT)
+
 
 @socket_.on('up-right')
 def handle_message(data):
     print('received message: ' + data)
+    set_direction(Directions.FRONT_RIGHT)
+
 
 @socket_.on('down-left')
 def handle_message(data):
     print('received message: ' + data)
+    set_direction(Directions.REAR_LEFT)
+
 
 @socket_.on('down-right')
 def handle_message(data):
     print('received message: ' + data)
-    
+    set_direction(Directions.REAR_RIGHT)
+
+
 @socket_.on('stop')
 def handle_message(data):
     print('received message: ' + data)
@@ -129,10 +142,17 @@ def set_direction(direction):
         motorDriver.turn_left()
     elif direction == Directions.RIGHT:
         motorDriver.turn_right()
+    elif direction == Directions.FRONT_LEFT:
+        motorDriver.go_front_left()
+    elif direction == Directions.FRONT_RIGHT:
+        motorDriver.go_front_right()
+    elif direction == Directions.REAR_LEFT:
+        motorDriver.go_rear_left()
+    elif direction == Directions.REAR_RIGHT:
+        motorDriver.go_rear_right()
     else:
         motorDriver.set_idle_mode()
 
 
 if __name__ == '__main__':
     socket_.run(app, host='0.0.0.0', allow_unsafe_werkzeug=True)
-

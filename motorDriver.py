@@ -105,6 +105,16 @@ def go_front_right():
     set_fr(True)
 
 
+def go_rear_left():
+    set_rr(False)
+    set_fl(False)
+
+
+def go_rear_right():
+    set_rl(False)
+    set_fr(False)
+
+
 def set_fr(forward: bool):
     if forward:
         GPIO.output(FRONT_RIGHT_MOTOR_DATA_ONE, True)
