@@ -76,16 +76,28 @@ button:active {
   height: 100%;
 }
 
- @media (max-height: 650px) {
+@media (max-height: 550px) {
    #camera-container {
     height: 60vh;
+    max-width: 60%;
   } 
+  .arrows {
+    font-size: 15px;
+    font-weight: 800;
+    height: 8vh;
+  }
 } 
 
 @media (max-width: 300px) {
   .arrows {
     font-size: 25px;
     font-weight: 800;
+  }
+} 
+
+@media (max-width: 600px) {
+  #camera-container {
+    height: 50vh;
   }
 } 
 
